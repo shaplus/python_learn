@@ -1,0 +1,38 @@
+# 创建一个学生信息字典
+student = {
+    "name": "张三",
+    "age": 18,
+    "grade": "A",
+}
+
+# 1. 打印学生的所有信息
+print("学生信息:")
+print(student)
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# 2. 添加一个新的键值对（address）
+print("添加地址:")
+student["address"] = "北京市海淀区"
+print(student)
+
+# 3. 修改学生的年龄
+print("修改年龄:")
+student["age"] = 19
+print(student)
+
+# 4. 删除grade键
+print("删除等级:")
+del student["grade"]
+print(student)
+
+# 5. 检查学生是否有phone键,如果有,则打印手机号,如果没有添加一个默认值
+print("检查是否有phone键:")
+if "phone" in student:
+    print("手机号:", end="")
+    print(student["phone"])
+else:
+    student["phone"] = "13800000000"
+    print("添加默认手机号:", end="")
+    print(student["phone"])
+    print(student)
