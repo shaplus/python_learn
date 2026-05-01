@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>NumPy &#x6570;&#x636e;&#x7c7b;&#x578b;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="numpy-数据类型">NumPy 数据类型</h1>
+<p>numpy 支持的数据类型比 Python 内置的类型要多很多，基本上可以和 C 语言的数据类型对应上，其中部分类型对应为 Python 内置的类型。下表列举了常用 NumPy 基本类型。</p>
+<p>下表列举了常用 NumPy 基本类型:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool_</td>
+<td>布尔型数据类型（True 或者 False）</td>
+</tr>
+<tr>
+<td>int_</td>
+<td>默认的整数类型（类似于 C 语言中的 long，int32 或 int64）</td>
+</tr>
+<tr>
+<td>intc</td>
+<td>与 C 的 int 类型一样，一般是 int32 或 int 64</td>
+</tr>
+<tr>
+<td>intp</td>
+<td>用于索引的整数类型（类似于 C 的 ssize_t，一般情况下仍然是 int32 或 int64）</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>字节（-128 to 127）</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>整数（-32768 to 32767）</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>整数（-2147483648 to 2147483647）</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>整数（-9223372036854775808 to 9223372036854775807）</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>无符号整数（0 to 255）</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>无符号整数（0 to 65535）</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>无符号整数（0 to 4294967295）</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>无符号整数（0 to 18446744073709551615）</td>
+</tr>
+<tr>
+<td>float_</td>
+<td>float64 类型的简写</td>
+</tr>
+<tr>
+<td>float16</td>
+<td>半精度浮点数，包括：1 个符号位，5 个指数位，10 个尾数位</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>单精度浮点数，包括：1 个符号位，8 个指数位，23 个尾数位</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>双精度浮点数，包括：1 个符号位，11 个指数位，52 个尾数位</td>
+</tr>
+<tr>
+<td>complex_</td>
+<td>complex128 类型的简写，即 128 位复数</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>复数，表示双 32 位浮点数（实数部分和虚数部分）</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>复数，表示双 64 位浮点数（实数部分和虚数部分）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>int8, int16, int32, int64 四种数据类型可以使用字符串 'i1', 'i2','i4','i8' 代替</li>
+<li>uint8, uint16, uint32, uint64 四种数据类型可以使用字符串 'u1', 'u2','u4','u8' 代替</li>
+<li>float16, float32, float64 三种数据类型可以使用字符串 'f2', 'f4','f8' 代替</li>
+</ul>
+<p>numpy 的数值类型实际上是 dtype 对象的实例，并对应唯一的字符，包括 np.bool_，np.int32，np.float32，等等。</p>
+<h1 id="数据类型对象-dtype">数据类型对象 (dtype)</h1>
+<p>数据类型对象（numpy.dtype 类的实例）用来描述与数组对应的内存区域是如何使用，它描述了数据的以下几个方面：：</p>
+<ul>
+<li>数据的类型（整数，浮点数或者 Python 对象）</li>
+<li>数据的大小（例如， 整数使用多少个字节存储）</li>
+<li>数据的字节顺序（小端法或大端法）</li>
+<li>在结构化类型的情况下，字段的名称、每个字段的数据类型和每个字段所取的内存块的部分</li>
+<li>如果数据类型是子数组，那么它的形状和数据类型是什么。</li>
+</ul>
+<p>字节顺序是通过对数据类型预先设定 &lt; 或 &gt; 来决定的。 &lt; 意味着小端法(最小值存储在最小的地址，即低位组放在最前面)。&gt; 意味着大端法(最重要的字节存储在最小的地址，即高位组放在最前面)。</p>
+<p>dtype 对象是使用以下语法构造的：</p>
+<pre><code class="language-python">numpy.dtype(<span class="hljs-built_in">object</span>, align, copy)
+</code></pre>
+<ul>
+<li>object - 要转换为的数据类型对象</li>
+<li>align - 如果为 true，填充字段使其类似 C 的结构体。</li>
+<li>copy - 复制 dtype 对象 ，如果为 false，则是对内置数据类型对象的引用</li>
+</ul>
+
+            
+            
+        </body>
+        </html>
